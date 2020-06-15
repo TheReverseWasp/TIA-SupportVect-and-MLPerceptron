@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 Datos/iris.csv
+
+Datos/Enfermedad_Cardiaca.csv
