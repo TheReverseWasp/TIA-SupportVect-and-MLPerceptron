@@ -90,3 +90,22 @@ def permutation(lst):
        for p in permutation(remLst):
            l.append([m] + p)
     return l
+
+#k-Folds helper
+def k_folds_helper(k_size, y_size, pos):
+    answer = np.zeros(y_size)
+    for i in range(y_size):
+        answer[i] = pos % k_size
+        pos /= k_size
+    return answer
+
+#generador de pesos
+def gen_weights(W_rows, X_rows):
+    return np.random.randn(W_rows, X_rows).astype("float128")
+
+def gen_weight_dic(list_dims):
+    W_dic = {}
+    for i in range(len(list_dims) - 1):
+        W_dic["w" + str(i + 1)] = gen_weights(list_dims[i] -  1, list_dims[i + 1] - 1)
+        W_dic["b" + str(i + 1)] = np.ones((list_dims[i + 1] - 1, 1))
+    return W_dic
